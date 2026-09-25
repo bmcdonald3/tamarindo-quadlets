@@ -40,3 +40,15 @@ systemctl start coredhcp.service
 systemctl start boot-service.service
 systemctl start registry.service
 systemctl start openchami-haproxy.service
+
+sudo mksquashfs /mnt/sles_root /data/boot-images/sles15-compute.squashfs -comp xz -e proc sys dev run
+
+cp /mnt/sles_root/boot/vmlinuz-$KVER /data/boot-images/vmlinuz 
+cp /mnt/sles_root/boot/initrd-$KVER /data/boot-images/initrd
+
+source /etc/versitygw/secrets.env
+
+aws s3api create-bucket --bucket boot-images --endpoint-url http://172.23.0.1:7070
+aws s3 cp /data/boot-images/sles15-compute.squashfs s3://boot-images/ --endpoint-url http://172.23.0.1:7070
+aws s3 cp /data/boot-images/vmlinuz s3://boot-images/ --endpoint-url http://172.23.0.1:7070
+aws s3 cp /data/boot-images/initrd s3://boot-images/ --endpoint-url http://172.23.0.1:7070
