@@ -1,0 +1,13 @@
+server4:
+  listen:
+    - "%bond0"
+  plugins:
+    - server_id: 172.23.0.1
+    - router: 172.23.0.1
+    - dns: 172.23.0.1
+    - bootloop: "lease_file=/var/lib/coredhcp/leases.json script_path=default lease_time=5m ipv4_start=172.23.0.100 ipv4_end=172.23.0.200"
+    - coresmd: "svc_base_uri=http://172.23.0.1:27779 ipxe_uri=http://172.23.0.1/ipxe.efi tftp_dir=/tftpboot domain=localdomain rule_log=info cache_valid=30s lease_time=1h tftp_port=69 ca_cert=/etc/ssl/certs/ca-certificates.crt"
+
+server6:
+  plugins:
+    - server_id: LL 00:de:ad:be:ef:00
