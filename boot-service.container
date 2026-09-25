@@ -1,0 +1,9 @@
+[Container]
+Image=ghcr.io/openchami/boot-service:latest
+Network=openchami.network
+Environment=SMD_URL=http://172.23.0.1:27779
+Environment=S3_URL=http://172.23.0.1:7070
+PublishPort=172.23.0.1:27778:27778
+
+[Install]
+WantedBy=multi-user.target

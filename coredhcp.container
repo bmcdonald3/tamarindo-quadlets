@@ -1,0 +1,10 @@
+[Container]
+Image=ghcr.io/openchami/coresmd:latest
+Network=host
+AddCapability=NET_ADMIN
+AddCapability=NET_RAW
+Volume=/etc/openchami/coredhcp.yaml:/etc/coredhcp/config.yaml:ro,Z
+Volume=/data/coredhcp:/var/lib/coredhcp:Z
+
+[Install]
+WantedBy=multi-user.target

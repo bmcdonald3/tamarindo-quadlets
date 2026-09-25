@@ -1,0 +1,6 @@
+[Network]
+NetworkName=openchami
+Subnet=10.88.0.0/16
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+[Container]
+Image=docker.io/library/registry:2
+Network=openchami.network
+Volume=/data/oci:/var/lib/registry:Z
+PublishPort=172.23.0.1:5000:5000
+
+[Install]
+WantedBy=multi-user.target

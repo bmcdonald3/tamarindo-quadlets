@@ -1,0 +1,11 @@
+[Container]
+Image=docker.io/library/haproxy:2.8
+Network=openchami.network
+Volume=/etc/openchami/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+PublishPort=172.23.0.1:80:80
+PublishPort=172.23.0.1:443:443
+PublishPort=10.101.51.232:80:80
+PublishPort=10.101.51.232:443:443
+
+[Install]
+WantedBy=multi-user.target

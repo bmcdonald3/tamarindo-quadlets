@@ -1,0 +1,11 @@
+[Container]
+Image=docker.io/library/postgres:15
+Network=openchami.network
+Volume=/data/postgres:/var/lib/postgresql/data:Z
+Environment=POSTGRES_USER=smd
+Environment=POSTGRES_PASSWORD=smdpassword
+Environment=POSTGRES_DB=smd
+PublishPort=172.23.0.1:5432:5432
+
+[Install]
+WantedBy=multi-user.target
