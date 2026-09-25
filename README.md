@@ -16,6 +16,8 @@ Create /etc/containers/systemd/smd-init.container
 
 Create /etc/containers/systemd/coredhcp.container
 
+Create /etc/openchami/coredhcp.yaml
+
 Create /etc/containers/systemd/boot-service.container
 
 Create /etc/containers/systemd/registry.container
