@@ -54,3 +54,15 @@ aws s3api create-bucket --bucket boot-images --endpoint-url http://172.23.0.1:70
 aws s3 cp /data/boot-images/sles15-compute.squashfs s3://boot-images/ --endpoint-url http://172.23.0.1:7070
 aws s3 cp /data/boot-images/vmlinuz s3://boot-images/ --endpoint-url http://172.23.0.1:7070
 aws s3 cp /data/boot-images/initrd s3://boot-images/ --endpoint-url http://172.23.0.1:7070
+
+
+curl -X POST http://172.23.0.1:27778/bootparameters \
+>   -H 'Content-Type: application/json' \
+>   -d '{
+>     "hosts": ["x3000c0s1b0n0"],
+>     "macs": ["AA:BB:CC:DD:EE:FF"],
+>     "params": "console=ttyS0,115200n8 rd.neednet=1 ip=dhcp root=live:http://172.23.0.1:7070/boot-images/compute-rootfs.squashfs",
+>     "kernel": "http://172.23.0.1:7070/boot-images/vmlinuz",
+>     "initrd": "http://172.23.0.1:7070/boot-images/initrd"
+>   }'
+{"boot-parameters":[{"hosts":["x3000c0s1b0n0"],"macs":["AA:BB:CC:DD:EE:FF"],"params":"console=ttyS0,115200n8 rd.neednet=1 ip=dhcp root=live:http://172.23.0.1:7070/boot-images/compute-rootfs.squashfs","kernel":"http://172.23.0.1:7070/boot-images/vmlinuz","initrd":"http://172.23.0.1:7070/boot-images/initrd","cloud-init":{},"meta":{"comment":"Converted from modern BootConfiguration","created-at":"2026-09-28T17:29:32.692026598Z","modified-at":"2026-09-28T17:29:32.692026598Z"}}]
